@@ -4,16 +4,20 @@ import java.util.Date;
 
 public class Boleto {
     private String numero;
-    private Date fecha;
-    private Teatro teatro;
+    private Date fechaCompra;
+    private Localidad localidad;
+    private String nombreComprador;
+    private String emailComprador;
 
-    public Boleto(String numero, Date fecha, Teatro teatro, int correlativo) {
-        this.numero = numero;
-        this.fecha = fecha;
-        this.numero = generarNumeroBoleto(fecha, correlativo);
+    public Boleto(Localidad localidad, Date fechaCompra, String nombreComprador, String emailComprador, int correlativo) {
+        this.localidad = localidad;
+        this.fechaCompra = fechaCompra;
+        this.nombreComprador = nombreComprador;
+        this.emailComprador = emailComprador;
+        this.numero = generarNumeroBoleto(fechaCompra, correlativo);
     }
 
-     private String generarNumeroBoleto(Date fecha, int correlativo) {
+    private String generarNumeroBoleto(Date fecha, int correlativo) {
         SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy");
         return sdf.format(fecha) + correlativo;
     }
@@ -23,47 +27,20 @@ public class Boleto {
         return numero;
     }
 
-    public Date getFecha() {
-        return fecha;
+    public Date getFechaCompra() {
+        return fechaCompra;
     }
 
-    public Teatro getTeatro() {
-        return teatro;
+    public Localidad getLocalidad() {
+        return localidad;
     }
 
-    public void setTeatro(Teatro teatro) {
-        this.teatro = teatro;
+    public String getNombreComprador() {
+        return nombreComprador;
     }
 
-    public void setNumero(String numero) {
-        this.numero = numero;
+    public String getEmailComprador() {
+        return emailComprador;
     }
-
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
-
-    public String getNumeroBoleto() {
-        return numero;
-    }
-
-    public void setNumeroBoleto(String numeroBoleto) {
-        this.numero = numeroBoleto;
-    }
-
-    public Date getFechaBoleto() {
-        return fecha;
-    }
-
-    //get localidad
-    public Teatro getTeatroBoleto() {
-        return teatro;
-    }
-
-    Object getLocalidad() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    
 
 }
